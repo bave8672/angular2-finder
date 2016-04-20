@@ -4,9 +4,10 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 
-import {Home} from './home';
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
+
+import {Results} from './results';
 
 /*
  * App Component
@@ -16,65 +17,16 @@ import {RouterActive} from './router-active';
   selector: 'app',
   pipes: [ ],
   providers: [ ],
-  directives: [ RouterActive ],
+  directives: [ Results ],
   encapsulation: ViewEncapsulation.None,
-  styles: [`
-    body {
-      margin: 0;
-    }
-    md-toolbar ul {
-      display: inline;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 60px;
-    }
-    md-toolbar li {
-      display: inline;
-    }
-    md-toolbar li.active {
-      background-color: lightgray;
-    }
-  `],
   template: `
-    <md-toolbar color="primary">
-      <span>{{ name }}</span>
-      <nav>
-        <ul>
-          <li router-active>
-            <a [routerLink]=" ['Index'] ">Index</a>
-          </li>
-          |
-          <li router-active>
-            <a [routerLink]=" ['Home'] ">Home</a>
-          </li>
-          |
-          <li router-active>
-            <a [routerLink]=" ['About'] ">About</a>
-          </li>
-        </ul>
-      </nav>
-    </md-toolbar>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre>this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
-      <div>
-        <img [src]="angularclassLogo" width="10%">
-      </div>
-    </footer>
+    <div class="app">
+      <results></results>
+    </div>
   `
 })
 @RouteConfig([
-  { path: '/',      name: 'Index', component: Home, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Home },
-  // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
+  // { path: '/',      name: 'Index', component: Home, useAsDefault: true }
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
