@@ -118,46 +118,52 @@ interface Thenable<T> {
   catch<U>(onRejected?: (error: any) => U | Thenable<U>): Thenable<U>;
 }
 
+declare namespace app {
 
-declare namespace Faroo {
+  export namespace Faroo {
 
-  export interface Constants {
-    apiBase: string;
-    sources: {
-      web: string;
-      news: string;
-      topics: string;
-      trends: string;
+    export interface Constants {
+      apiBase: string;
+      sources: {
+        web: string;
+        news: string;
+        topics: string;
+        trends: string;
+      }
+    }
+
+    export interface Response {
+      query: string;
+      suggestions: any[];
+      count: number;
+      start: number;
+      length: number;
+      time: number;
+      results: Result[];
+    }
+
+    export interface Result {
+      title: string;
+      kwic: string;
+      content: string;
+      url: string;
+      iurl: string;
+      author: string;
+      date: number;
+      domain: string;
+      news: boolean;
+      number: boolean;
     }
   }
 
-  export interface response {
-    query: string;
-    suggestions: any[];
-    count: number;
-    start: number;
-    length: number;
-    time: number;
-    results: result[];
-  }
-
-  export interface result {
-    title: string;
-    kwic: string;
-    content: string;
-    url: string;
-    iurl: string;
-    author: string;
-    date: number;
-    domain: string;
-    news: boolean;
-    number: boolean;
-  }
-}
-
-declare namespace app {
-
   export interface Search {
+
+    get(
+      source: string,
+      query: string,
+      start?: number,
+      length?: number
+    ): any;
 
     web(
       query: string,

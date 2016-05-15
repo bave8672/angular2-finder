@@ -144,6 +144,12 @@ module.exports = {
         exclude: [helpers.root('src/index.html')]
       },
 
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: 'raw-loader!sass-loader'
+      }
+
     ]
 
   },
