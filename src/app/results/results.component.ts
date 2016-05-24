@@ -27,6 +27,7 @@ export class Results {
 	}
 
 	onSearchArgsChanged(args: { query: string; searchType: string; }) {
+		console.log(args);
 		this.search.get(args.searchType, args.query, 1, 10)
 			.subscribe(results => this.results = results);
 	}

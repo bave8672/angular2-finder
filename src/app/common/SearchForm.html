@@ -2,8 +2,8 @@
 	<input type="text" [ngFormControl]="queryControl" placeholder="Search the web" />
 	<ul>
 		<li *ngFor="#searchType of searchTypes">
-			<input name="searchType" id="{{searchType}}" type="radio" value="{{searchType}}" />
-			<label attr.for="{{searchType}}">{{capitalise(searchType)}}</label>
+			<input class="hidden" name="searchType" id="{{searchType}}" type="radio" value="{{searchType}}" />
+			<label attr.for="{{searchType}}" (click)="onTypeChanged(searchType)">{{capitalise(searchType)}}</label>
 		</li>
 	</ul>
 </div>

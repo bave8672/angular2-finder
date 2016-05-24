@@ -15,8 +15,8 @@ import {Faroo} from '../search';
 export class SearchForm {
 
 	searchTypes: Array<string> = [];
+	searchType: string;
 	queryControl: Control = new Control('Kanye West');
-	//searchTypeControl = new Control('news');
 
 	@Output() searchArgs = new EventEmitter<{ query: string; searchType: string; }>();
 
@@ -25,22 +25,28 @@ export class SearchForm {
 	) {
 		_.forIn(this.faroo.sources, source => this.searchTypes.push(source));
 
-		// Observable.merge(
-		// 	this.queryControl.valueChanges
-		// 		.startWith(this.queryControl.value)
-		// 		.debounceTime(400)
-		// 		.distinctUntilChanged(),
-		// 	this.searchTypeControl.valueChanges
-		// 		.startWith(this.queryControl.value)
-		// 		.debounceTime(400)
-		// 		.distinctUntilChanged())
-		// 	.subscribe(() => this.searchArgs.emit({
-		// 		query: this.queryControl.value,
-		// 		searchType: this.searchTypeControl.value
-		// 	}));
+		this.searchType = this.faroo.sources.news;
+
+		this.queryControl.valueChanges
+			.startWith(this.queryControl.value)
+			.debounceTime(400)
+			.distinctUntilChanged()
+			.subscribe(() => this.emitArgs());
 	}
 
 	capitalise(word: string) {
 		return word.charAt(0).toUpperCase() + word.slice(1);
+	}
+
+	onTypeChanged(type: string) {
+		this.searchType = type;
+		this.emitArgs();
+	}
+
+	emitArgs() {
+		this.searchArgs.emit({
+			query: this.queryControl.value,
+			searchType: this.searchType
+		});
 	}
 }
