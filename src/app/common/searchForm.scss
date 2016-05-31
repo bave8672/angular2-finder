@@ -1,6 +1,10 @@
+@import "../../assets/css/index";
+
 .SearchForm {
 
-	background-color: gray;
+	background-color: #fff;
+	font-family: $primary-font;
+	position: fixed;
 
 	ul {
 		display: inline-block;

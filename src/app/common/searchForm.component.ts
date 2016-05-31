@@ -27,6 +27,8 @@ export class SearchForm {
 
 		this.searchType = this.faroo.sources.news;
 
+		document.querySelector(`.SearchForm-type[value=${this.faroo.sources.news}]`)['checked'] = true;
+
 		this.queryControl.valueChanges
 			.startWith(this.queryControl.value)
 			.debounceTime(400)
