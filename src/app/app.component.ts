@@ -19,6 +19,7 @@ import {Results} from './results';
   providers: [ ],
   directives: [ Results ],
   encapsulation: ViewEncapsulation.None,
+  styles: [require('./app.scss')],
   template: `
     <div class="app">
       <results></results>

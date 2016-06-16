@@ -4,7 +4,13 @@
 
 	background-color: #fff;
 	font-family: $primary-font;
+	height: $navbar-height;
+	padding: 0 10px 0 10px;
 	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	transition: top 200ms;
 
 	ul {
 		display: inline-block;
@@ -23,7 +29,8 @@
 	    cursor: pointer;
 	    height: 22px;
 	}
-	input:checked + label {
-	    background: red;
+
+	&-hidden {
+		top: -$navbar-height;
 	}
 }

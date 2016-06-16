@@ -18,7 +18,7 @@ export class Search implements app.Search {
 		query?: string,
 		start?: number,
 		length?: number
-    ): Observable<app.Faroo.Response> {
+    ): Observable<Array<app.Faroo.Result>> {
     	switch (source) {
     		case this.faroo.sources.web:
 				return this.web(query, start, length);
@@ -72,7 +72,7 @@ export class Search implements app.Search {
 		q: string = '',
 		start: number = 1,
 		length: number = 10
-	): Observable<app.Faroo.Response> {
+	): Observable<Array<app.Faroo.Result>> {
 		return this.http.get(encodeURI(
 			`${this.faroo.apiBase}&src=${src}&q=${q}&start=${start}&length=${length}&l=en&f=json`))
 			.map(res => res.json().results);

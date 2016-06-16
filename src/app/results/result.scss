@@ -1,8 +1,12 @@
 .result {
+	background-color: #f3f3f3;
+	overflow-x: hidden;
 
-	font-family: Helvetica;
+	&:hover {
+		background-color: #cb213d;
+	}
 
-	img {
+	.img-preview {
 		height: 100px;
 	}
 
