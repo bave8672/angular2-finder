@@ -1,0 +1,12 @@
+@import "../assets/css/index.scss";
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.app {
+	background-color: #231f20;
+	font-family: Helvetica;
+	padding-top: $navbar-height;
+}
