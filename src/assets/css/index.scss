@@ -1,4 +1,21 @@
 @import "constants";
 
-// materialize
-@import "../../../node_modules/materialize-css/sass/materialize.scss"
+// Materialize
+
+// Mixins
+@import "../../../node_modules/materialize-css/sass/components/mixins";
+@import "../../../node_modules/materialize-css/sass/components/color";
+
+// Variables;
+@import "../../../node_modules/materialize-css/sass/components/variables";
+
+// Reset
+@import "../../../node_modules/materialize-css/sass/components/normalize";
+
+// Components
+@import "../../../node_modules/materialize-css/sass/components/global";
+@import "../../../node_modules/materialize-css/sass/components/grid";
+@import "../../../node_modules/materialize-css/sass/components/typography";
+@import "../../../node_modules/materialize-css/sass/components/cards"; 
+@import "../../../node_modules/materialize-css/sass/components/forms/radio-buttons"; 
+@import "../../../node_modules/materialize-css/sass/components/forms/input-fields"; 

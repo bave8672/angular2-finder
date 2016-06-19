@@ -15,7 +15,7 @@ import {ENV_PROVIDERS} from './platform/environment';
 * App Component
 * our top level component that holds all of our components
 */
-import {App, APP_PROVIDERS} from './app';
+import {App} from './app';
 import {Faroo} from './app/search/faroo.service.ts';
 import {Search} from './app/search/search.service.ts';
 
@@ -30,7 +30,6 @@ export function main(initialHmrState?: any): Promise<any> {
     ...PROVIDERS,
     ...DIRECTIVES,
     ...PIPES,
-    ...APP_PROVIDERS,
     HTTP_PROVIDERS,
     Faroo,
     Search

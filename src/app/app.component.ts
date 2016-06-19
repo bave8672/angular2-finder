@@ -1,13 +1,10 @@
-/*
- * Angular 2 decorators and services
- */
 import {Component, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, Router} from 'angular2/router';
 
-import {AppState} from './app.service';
-import {RouterActive} from './router-active';
+import {throttle} from 'lodash';
 
+import {Faroo, Search} from './search';
 import {Results} from './results';
+import {SearchForm} from './SearchForm';
 
 /*
  * App Component
@@ -16,36 +13,45 @@ import {Results} from './results';
 @Component({
   selector: 'app',
   pipes: [ ],
-  providers: [ ],
-  directives: [ Results ],
+  providers: [ Faroo, Search ],
+  directives: [ Results, SearchForm ],
   encapsulation: ViewEncapsulation.None,
   styles: [require('./app.scss')],
-  template: `
-    <div class="app">
-      <results></results>
-    </div>
-  `
+  template: require('./app.html')
 })
-@RouteConfig([
-  // { path: '/',      name: 'Index', component: Home, useAsDefault: true }
-])
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
 
-  constructor(public appState: AppState) {}
+  searchQuery: string;
+  searchType: string;
+  results: Array<app.Faroo.Result>;
+  isRequesting: boolean = false;
 
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+  constructor(
+    private search: Search
+  ) {
+    document.addEventListener('scroll', () => this.onScroll());
   }
 
-}
+  onSearchArgsChanged(args: { query: string; searchType: string; }) {
+    this.searchQuery = args.query;
+    this.searchType = args.searchType;
+    this.getResults(1, 10)
+      .subscribe(results => this.results = results);
+  }
 
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */
+  private getResults(start, amount) {
+    return this.search.get(this.searchType, this.searchQuery, start, amount);
+  }
+
+  private lastScrollY: number;
+  private onScroll = throttle(() => {
+    if (!this.isRequesting && (window.innerHeight + window.scrollY + 15) >= document.body.offsetHeight) {
+      this.isRequesting = true;
+      this.getResults(this.results.length + 1, 10)
+        .subscribe((results => {
+          this.isRequesting = false;
+          this.results = this.results.concat(results);
+      }).bind(this));
+    }
+  }, 200);
+}

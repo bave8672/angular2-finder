@@ -2,15 +2,26 @@
 
 .SearchForm {
 
-	background-color: #fff;
+	background-color: #333;
+	color: #fff;
 	font-family: $primary-font;
-	height: $navbar-height;
-	padding: 0 10px 0 10px;
 	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100vw;
-	transition: top 200ms;
+	transition: top 300ms;
+	box-shadow: 3px 0 3px #333;
+
+	.title {
+		color: $col-1;
+		font-size: 3em;
+		margin-right: 5vw;
+		vertical-align: -20%;
+	}
+
+	form {
+
+	}
 
 	ul {
 		display: inline-block;
@@ -23,14 +34,14 @@
 	    margin-right: 15px;
 	}
 	input.hidden {
-	    visibility:hidden;
+	    visibility: hidden;
 	}
 	label {
 	    cursor: pointer;
 	    height: 22px;
 	}
 
-	&-hidden {
-		top: -$navbar-height;
+	&-query {
+		max-width: 10rem;
 	}
 }

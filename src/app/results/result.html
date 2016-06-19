@@ -1,7 +1,10 @@
-<div class="result card-panel hoverable">
-	<a href="{{result.url}}">
-		<h2 class="result-title">{{result.title}}</h2>
-		<img class="img-preview" *ngIf="result.iurl" src="{{result.iurl}}" />
-		<p>{{result.domain}}</p>
-	</a>
+
+<div class="result ">
+	<div class="result-content container">
+		<a href="{{result.url}}">
+			<h2 class="result-title">{{result.title}}</h2>
+			<img class="img-preview" *ngIf="result.iurl" src="{{result.iurl}}" />
+			<p>{{result.domain}}</p>
+		</a>
+	</div>
 </div>

@@ -1,9 +1,0 @@
-<div class="SearchForm">
-	<input class="SearchForm-query" type="text" [ngFormControl]="queryControl" placeholder="Search the web" />
-	<ul>
-		<li *ngFor="#searchType of searchTypes">
-			<input class="SearchForm-type hidden" name="searchType" id="{{searchType}}" type="radio" value="{{searchType}}" checked="{{searchType === 'news' ? 'checked' : ''}}" />
-			<label attr.for="{{searchType}}" (click)="onTypeChanged(searchType)">{{capitalise(searchType)}}</label>
-		</li>
-	</ul>
-</div>

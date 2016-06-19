@@ -3,7 +3,7 @@ import {BrowserDomAdapter} from 'angular2/platform/browser';
 import {Component, EventEmitter, Output} from 'angular2/core';
 import {Observable} from 'rxjs/Rx';
 
-import * as _ from 'lodash';
+import {forIn, throttle} from 'lodash';
 
 import {Faroo} from '../search';
 
@@ -15,10 +15,10 @@ import {Faroo} from '../search';
 })
 export class SearchForm {
 
-	searchTypes: Array<string> = [];
+	searchTypes: Array<string> = ['web', 'news'];
 	searchType: string;
 	queryControl: Control = new Control('Kanye West');
-	formElement: Element;
+	formElement: Element & { style: any; };
 
 	@Output() searchArgs = new EventEmitter<{ query: string; searchType: string; }>();
 
@@ -26,8 +26,6 @@ export class SearchForm {
 		private dom: BrowserDomAdapter,
 		private faroo: Faroo
 	) {
-		_.forIn(this.faroo.sources, source => this.searchTypes.push(source));
-
 		this.searchType = this.faroo.sources.news;
 
 		this.queryControl.valueChanges
@@ -55,15 +53,15 @@ export class SearchForm {
 		});
 	}
 
-	scrollHandler = _.throttle(() => {
+	scrollHandler = throttle(() => {
 		let scrollY = window.scrollY;
 		this.formElement = this.formElement ? this.formElement : this.dom.query('.SearchForm');
 
 		if (this.formElement) {
 			if (scrollY > this.formElement.clientHeight && scrollY > this.lastScrollY) {
-				this.formElement.classList.add('SearchForm-hidden');
+				this.formElement.style['top'] = -this.formElement.clientHeight - 5 + 'px';
 			} else if (scrollY < this.lastScrollY) {
-				this.formElement.classList.remove('SearchForm-hidden');
+				this.formElement.style['top'] = '0';
 			}
 		}
 

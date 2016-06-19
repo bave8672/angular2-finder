@@ -1,9 +1,15 @@
-.result {
-	background-color: #f3f3f3;
-	overflow-x: hidden;
+@import "../../assets/css/index";
 
-	&:hover {
-		background-color: #cb213d;
+.result {
+	overflow-x: hidden;
+	background-color: #eee;
+
+	&-content {
+		border-bottom: 1px solid #bbb;
+	}
+
+	&-title {
+		font-size: 2em;
 	}
 
 	.img-preview {
