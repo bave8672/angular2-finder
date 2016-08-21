@@ -17,7 +17,7 @@ export class SearchForm {
 
 	searchTypes: Array<string> = ['web', 'news'];
 	searchType: string;
-	queryControl: Control = new Control('Kanye West');
+	queryControl: Control = new Control('');
 	formElement: Element & { style: any; };
 
 	@Output() searchArgs = new EventEmitter<{ query: string; searchType: string; }>();

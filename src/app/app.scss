@@ -1,53 +1,27 @@
 @import "../assets/css/index.scss";
 
-body {
-	background-color: #eee;
-}
-
 .app {
-	font-family: $primary-font;
-	padding-top: $navbar-height;
+	font-family: $body-font;
+	padding-top: $navbar-height * 1.5;
 }
 
-a {
-	text-decoration: none;
-	color: $col-1;
-
-	:hover {
-		color: $col-2;
-	}
-
-	:active {
-		color: $col-5;
-	}
-}
-
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+@media (min-width: 600px) {
+  .app {
+    	padding-top: $navbar-height;
   }
 }
 
-$base-line-height: 24px;
-$white: rgb(255,255,255);
-$off-white: rgba($white, 0.2);
-$spin-duration: 1s;
+input:focus {
+  border-bottom: 1px solid $color-primary !important;
+  box-shadow: 0 1px 0 0 $color-primary !important;
+}
 
-.loading {
-	padding: 10px;
-	margin: 7em auto;
-    border-radius: 50%;
-    width: $base-line-height;
-    height: $base-line-height;
-    border: .25rem solid #ddd;
-    border-top-color: #333;
-    animation: spin $spin-duration infinite linear;
-  &--double {
-    border-style: double;
-    border-width: .5rem;
-  }
+label::after {
+  background-color: $color-primary !important;
+}
+
+[type="radio"]:checked + label:after, 
+[type="radio"].with-gap:checked + label:before, 
+[type="radio"].with-gap:checked + label:after {
+  border: 2px solid $color-primary !important;
 }

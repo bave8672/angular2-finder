@@ -1,10 +1,13 @@
-$primary-font: Helvetica, Sans-Serif;
+// Fonts
+$display-font: 'Abril Fatface', cursive;
+$body-font: 'Roboto', sans-serif;
 
+// Dimensions
 $navbar-height: 5em;
 
-$col-1: #4D8AFF;
-$col-2: #46C5E8;
-$col-3: #5AFFD7;
-$col-4: #46E873;
-$col-5: #72FF44;
+// Colors
+$color-primary: #d00;
+$color-primary--light: mix($color-primary, #fff, 80%);
+
+$color-bodytext: #333;
 

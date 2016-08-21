@@ -1,26 +1,22 @@
 @import "../../assets/css/index";
 
 .SearchForm {
-
-	background-color: #333;
-	color: #fff;
-	font-family: $primary-font;
+	background-color: #fff;
+	color: $color-bodytext;
 	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100vw;
 	transition: top 300ms;
-	box-shadow: 3px 0 3px #333;
+	box-shadow: 0 0 3px #333;
 
 	.title {
-		color: $col-1;
+		color: #000;
 		font-size: 3em;
+		font-family: $display-font;
 		margin-right: 5vw;
 		vertical-align: -20%;
-	}
-
-	form {
-
+		//text-shadow: 0 0 1px #000; 
 	}
 
 	ul {

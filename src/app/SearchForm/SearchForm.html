@@ -1,7 +1,7 @@
 <nav class="SearchForm">
 	<form class="container">
-		<span class="title">App</span>
-		<input class="SearchForm-query" type="text" [ngFormControl]="queryControl" placeholder="Search the web" />
+		<span class="title">FindMe</span>
+		<input class="SearchForm-query input-field" type="text" [ngFormControl]="queryControl" placeholder="Kanye, Politics, Cats..." />
 		<ul>
 			<li *ngFor="#searchType of searchTypes">
 				<input class="SearchForm-type hidden" name="searchType" id="{{searchType}}" type="radio" value="{{searchType}}" checked="{{searchType === 'news' ? 'checked' : ''}}" />

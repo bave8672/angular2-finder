@@ -1,10 +1,19 @@
 
-<div class="result ">
+<div class="result" [style.background-image]="'url(' + result.iurl + ')'">
 	<div class="result-content container">
-		<a href="{{result.url}}">
-			<h2 class="result-title">{{result.title}}</h2>
-			<img class="img-preview" *ngIf="result.iurl" src="{{result.iurl}}" />
-			<p>{{result.domain}}</p>
-		</a>
+		<div class="row">
+			<div class="col m12">
+				<h2 class="result-title">
+					<span class="text-bg">
+						<a href="{{result.url}}">{{result.title}}</a>
+					</span>
+				</h2>
+				<p>
+					<span class="text-bg">
+						<a href="{{'http://www.' + result.domain}}">{{result.domain}}</a>
+					</span>
+				</p>
+			</div>
+		</div>
 	</div>
 </div>

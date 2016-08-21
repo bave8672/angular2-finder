@@ -45,7 +45,7 @@ export class App {
 
   private lastScrollY: number;
   private onScroll = throttle(() => {
-    if (!this.isRequesting && (window.innerHeight + window.scrollY + 15) >= document.body.offsetHeight) {
+    if (!this.isRequesting && (window.innerHeight + window.scrollY + 150) >= document.body.offsetHeight) {
       this.isRequesting = true;
       this.getResults(this.results.length + 1, 10)
         .subscribe((results => {

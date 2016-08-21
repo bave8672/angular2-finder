@@ -1,3 +1,7 @@
+// External assets
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto');
+
+// Constants
 @import "constants";
 
 // Materialize
@@ -13,6 +17,7 @@
 @import "../../../node_modules/materialize-css/sass/components/normalize";
 
 // Components
+@import "spinner";
 @import "../../../node_modules/materialize-css/sass/components/global";
 @import "../../../node_modules/materialize-css/sass/components/grid";
 @import "../../../node_modules/materialize-css/sass/components/typography";
